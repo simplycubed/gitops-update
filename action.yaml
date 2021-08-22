@@ -1,0 +1,24 @@
+name: 'Gitops release'
+description: 'Updates a key in a repository and commit it'
+inputs:
+  filename: 
+    description: 'Filename to update'
+    required: true
+  key:  
+    description: "The key to update. Key a string before the colon. Usually it's yaml key like `this-is-key: value`"
+    required: true
+  value:  
+    description: "The value to set"
+    required: true
+  github-token:  
+    description: "Github token to clone and commit target repository"
+    required: true
+  github-org-and-repo:  
+    description: "Target organization and repository in form of `some-org/repo`"
+    required: true
+
+runs:
+  using: "composite"
+  steps:        
+    - run: ${{ github.action_path }}/run.sh "${{ inputs.filename }}" "${{ inputs.key }}" "${{ inputs.value }}" "${{ inputs.github-token }}" "${{ inputs.github-org-and-repo }}"
+      shell: bash
