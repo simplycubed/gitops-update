@@ -11,7 +11,7 @@ tag=args.key
 newValue = args.value
 
 
-# print ("{} {} ".format(tag, newValue))
+print ("{} {} ".format(tag, newValue))
 with open(args.file) as f:
     doc = yaml.safe_load(f)
 
@@ -45,8 +45,3 @@ with open(args.file) as f:
 with open(args.file, 'w') as f:
     yaml.dump(doc, f)
 
-# def replace_value(data, lookup, replacement):
-#     *parents, key = lookup
-#     for parent in parents:
-#         data = data[parent]
-#     data[key] = replacement
