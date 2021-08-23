@@ -5,6 +5,7 @@ git config --global user.email "gitops-release@github.com"
 git config --global user.name "Gitops Release User"
 ssh-agent -a /tmp/ssh_agent.sock > /dev/null
 echo $4 > /tmp/id_github
+eval `ssh-agent`
 ssh-add /tmp/id_github
 git clone https://git@github.com:$5.git  $RUNNER_TEMP/infra-as-code-repo
 wget https://raw.githubusercontent.com/simplycubed/gitops-update/master/replace-key.py
