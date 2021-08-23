@@ -38,6 +38,8 @@ git config --global user.email "gitops-release@github.com"
 git config --global user.name "Gitops Release User"
 
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+echo "$4" > ~/.ssh/id_gh
 chmod 600 ~/.ssh/id_gh
 
 eval `ssh-agent`
