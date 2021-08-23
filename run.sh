@@ -7,7 +7,7 @@ VALUE=$3
 GITHUB_DEPLOY_KEY=$4
 GITHUB_ORG_AND_REPO=$5
 
-if [ ! -z $FILE_NAME ]; then
+if [ -z $FILE_NAME ]; then
   echo "FILE_NAME no value specified"
   exit 1
 fi
