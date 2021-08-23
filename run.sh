@@ -34,10 +34,18 @@ fi
 
 mkdir -p ~/.ssh
 
-git config --global user.email "gitops-release@github.com"
-git config --global user.name "Gitops Release User"
+cat <<EOT >> ~/.ssh/config
+Host *
+  UseKeychain yes
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/id_rsa.pub
+  IdentityFile ~/.ssh/id_rsa
+EOT
 
-echo "$4" > ~/.ssh/id_rsa
+git config --global user.email "gitops-update@github.com"
+git config --global user.name "Gitops Update User"
+
+echo $GITHUB_DEPLOY_KEY > ~/.ssh/id_rsa
 sed -i -e "s#\\\\n#\n#g" ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
 
