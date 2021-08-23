@@ -10,11 +10,9 @@ args=parser.parse_args()
 tag=args.key
 newValue = args.value
 
-
 print ("{} {} ".format(tag, newValue))
 with open(args.file) as f:
     doc = yaml.safe_load(f)
-
 
     key_path_list = [int(e) if e.isdigit() else e for e in tag.split(".")]
     print(key_path_list)
@@ -44,4 +42,3 @@ with open(args.file) as f:
     print(doc)
 with open(args.file, 'w') as f:
     yaml.dump(doc, f)
-
