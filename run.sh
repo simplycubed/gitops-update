@@ -7,27 +7,27 @@ VALUE=$3
 GITHUB_DEPLOY_KEY=$4
 GITHUB_ORG_AND_REPO=$5
 
-if [ ! -f "${FILE_NAME}" ] && [ ! -d "${FILE_NAME}" ]; then
+if [ ! -z $FILE_NAME ]; then
   echo "FILE_NAME no value specified"
   exit 1
 fi
 
-if [ ! -f "${KEY}" ] && [ ! -d "${KEY}" ]; then
+if [ -z $KEY ]; then
   echo "KEY no value specified"
   exit 1
 fi
 
-if [ ! -f "${VALUE}" ] && [ ! -d "${VALUE}" ]; then
+if [ -z $VALUE ]; then
   echo "VALUE no value specified"
   exit 1
 fi
 
-if [ ! -f "${GITHUB_DEPLOY_KEY}" ] && [ ! -d "${GITHUB_DEPLOY_KEY}" ]; then
+if [ -z $GITHUB_DEPLOY_KEY ]; then
   echo "GITHUB_DEPLOY_KEY no value specified"
   exit 1
 fi
 
-if [ ! -f "${GITHUB_ORG_AND_REPO}" ] && [ ! -d "${GITHUB_ORG_AND_REPO}" ]; then
+if [ -z $GITHUB_ORG_AND_REPO ]; then
   echo "GITHUB_ORG_AND_REPO no value specified"
   exit 1
 fi
