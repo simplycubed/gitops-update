@@ -38,11 +38,12 @@ git config --global user.email "gitops-release@github.com"
 git config --global user.name "Gitops Release User"
 
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-echo $4 > ~/.ssh/id_rsa
-chmod 600 ~/.ssh/id_rsa
+echo $4 > ~/.ssh/id_gh
+chmod 600 ~/.ssh/id_gh
 
 eval `ssh-agent`
-ssh-add ~/.ssh/id_rsa
+ssh-add ~/.ssh/id_gh
+cat ~/.ssh/config
 git clone https://git@github.com:$GITHUB_ORG_AND_REPO.git  $RUNNER_TEMP/infra-as-code-repo
 wget https://raw.githubusercontent.com/simplycubed/gitops-update/master/replace-key.py
 python replace-key.py --file $RUNNER_TEMP/infra-as-code-repo/$FILE_NAME --key $KEY --value $VALUE
