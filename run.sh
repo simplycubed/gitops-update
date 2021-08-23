@@ -38,7 +38,6 @@ cat <<EOT >> ~/.ssh/config
 Host *
   UseKeychain yes
   AddKeysToAgent yes
-  IdentityFile ~/.ssh/id_rsa.pub
   IdentityFile ~/.ssh/id_rsa
 EOT
 
