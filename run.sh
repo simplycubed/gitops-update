@@ -38,6 +38,7 @@ git config --global user.email "gitops-release@github.com"
 git config --global user.name "Gitops Release User"
 
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+echo "$GITHUB_DEPLOY_KEY"
 
 echo "$GITHUB_DEPLOY_KEY" > ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
