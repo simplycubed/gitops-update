@@ -42,6 +42,7 @@ echo $4 > ~/.ssh/id_gh
 chmod 600 ~/.ssh/id_gh
 
 eval `ssh-agent`
+cat ~/.ssh/id_gh
 ssh-add ~/.ssh/id_gh
 cat ~/.ssh/config
 git clone https://git@github.com:$GITHUB_ORG_AND_REPO.git  $RUNNER_TEMP/infra-as-code-repo
