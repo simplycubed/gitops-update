@@ -10,7 +10,7 @@ inputs:
   value:  
     description: "The value to set"
     required: true
-  github-deploy-private-key:  
+  github-deploy-key:  
     description: "Github deploy ssh private key to clone and commit target repository"
     required: true
   github-org-and-repo:  
