@@ -37,10 +37,8 @@ mkdir -p ~/.ssh
 git config --global user.email "gitops-release@github.com"
 git config --global user.name "Gitops Release User"
 
-echo "$GITHUB_DEPLOY_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+echo "$4" > ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
-
-cat ~/.ssh/id_rsa
 
 eval `ssh-agent`
 ssh-add ~/.ssh/id_rsa
