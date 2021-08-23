@@ -1,13 +1,20 @@
 #!/bin/sh -l
 set -e
 
+mkdir -p ~/.ssh
+
 git config --global user.email "gitops-release@github.com"
 git config --global user.name "Gitops Release User"
-ssh-agent -a /tmp/ssh_agent.sock > /dev/null
-echo $4 > /tmp/id_github
-chmod 600 /tmp/id_github
+
+ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+ssh-agent -a ~/.ssh/ssh_agent.sock > /dev/null
+
+echo $4 > ~/.ssh/id_rsa
+sed -i -e "s#\\\\n#\n#g" ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa
+
 eval `ssh-agent`
-ssh-add /tmp/id_github
+ssh-add ~/.ssh/id_rsa
 git clone https://git@github.com:$5.git  $RUNNER_TEMP/infra-as-code-repo
 wget https://raw.githubusercontent.com/simplycubed/gitops-update/master/replace-key.py
 python replace-key.py --file $RUNNER_TEMP/infra-as-code-repo/$1 --key $2 --value $3
