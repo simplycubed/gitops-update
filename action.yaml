@@ -1,5 +1,5 @@
-name: 'Gitops release'
-description: 'Updates a key in a repository and commit it'
+name: 'Gitops Update'
+description: 'Updates a key in a gitops repository and commit it'
 inputs:
   filename: 
     description: 'Filename to update'
