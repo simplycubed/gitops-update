@@ -38,6 +38,7 @@ git config --global user.email "gitops-release@github.com"
 git config --global user.name "Gitops Release User"
 
 echo "$4" > ~/.ssh/id_rsa
+sed -i -e "s#\\\\n#\n#g" ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
 
 eval `ssh-agent`
