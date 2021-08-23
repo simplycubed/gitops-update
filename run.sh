@@ -44,7 +44,9 @@ chmod 600 ~/.ssh/id_rsa
 
 eval `ssh-agent`
 ssh-add ~/.ssh/id_rsa
-git clone git@github.com:$GITHUB_ORG_AND_REPO.git  $RUNNER_TEMP/infra-as-code-repo
+FULL_REPO_PATH="git@github.com:${GITHUB_ORG_AND_REPO}.git"
+echo $FULL_REPO_PATH
+git clone $FULL_REPO_PATH $RUNNER_TEMP/infra-as-code-repo
 wget https://raw.githubusercontent.com/simplycubed/gitops-update/master/replace-key.py
 python replace-key.py --file $RUNNER_TEMP/infra-as-code-repo/$FILE_NAME --key $KEY --value $VALUE
 cd $RUNNER_TEMP/infra-as-code-repo
