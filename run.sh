@@ -34,18 +34,10 @@ fi
 
 mkdir -p ~/.ssh
 
-cat <<EOT >> ~/.ssh/config
-Host *
-  UseKeychain yes
-  AddKeysToAgent yes
-  IdentityFile ~/.ssh/id_rsa
-EOT
-
 git config --global user.email "gitops-update@github.com"
 git config --global user.name "Gitops Update User"
 
 echo $GITHUB_DEPLOY_KEY > ~/.ssh/id_rsa
-sed -i -e "s#\\\\n#\n#g" ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
 
 eval `ssh-agent`
