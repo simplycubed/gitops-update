@@ -26,7 +26,7 @@ runs:
         python-version: 3.10.0-rc.1
     - name: Install dependencies
       run: |
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install -r requirements.txt
       shell: bash
     - run: ${{ github.action_path }}/run.sh "${{ inputs.filename }}" "${{ inputs.key }}" "${{ inputs.value }}" "${{ inputs.github-deploy-key }}" "${{ inputs.github-org-and-repo }}"
       shell: bash
