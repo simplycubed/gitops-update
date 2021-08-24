@@ -24,6 +24,8 @@ runs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.10.0-rc.1
+    - name: Upgrade pip
+      run: pip install --upgrade pip
     - name: Install dependencies
       run: |
         if [ -f ${{ github.action_path }}/requirements.txt ];then pip install -r ${{ github.action_path }}/requirements.txt; fi
