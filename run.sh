@@ -7,31 +7,6 @@ VALUE=$3
 GITHUB_DEPLOY_KEY=$4
 GITHUB_ORG_AND_REPO=$5
 
-if [ -z $FILE_NAME ]; then
-  echo "FILE_NAME no value specified"
-  exit 1
-fi
-
-if [ -z $KEY ]; then
-  echo "KEY no value specified"
-  exit 1
-fi
-
-if [ -z $VALUE ]; then
-  echo "VALUE no value specified"
-  exit 1
-fi
-
-if [ -z $GITHUB_DEPLOY_KEY ]; then
-  echo "GITHUB_DEPLOY_KEY no value specified"
-  exit 1
-fi
-
-if [ -z $GITHUB_ORG_AND_REPO ]; then
-  echo "GITHUB_ORG_AND_REPO no value specified"
-  exit 1
-fi
-
 mkdir -p ~/.ssh
 
 cat <<EOF >~/.ssh/config
