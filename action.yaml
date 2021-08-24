@@ -20,5 +20,5 @@ inputs:
 runs:
   using: "composite"
   steps:        
-    - run: ${{ github.action_path }}/run.sh ${{ inputs.filename }} ${{ inputs.key }} ${{ inputs.value }} ${{ inputs.github-deploy-key }} ${{ inputs.github-org-and-repo }}
+    - run: ${{ github.action_path }}/run.sh "${{ inputs.filename }}" "${{ inputs.key }}" "${{ inputs.value }}" "${{ inputs.github-deploy-key }}" "${{ inputs.github-org-and-repo }}"
       shell: bash
