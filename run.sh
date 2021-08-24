@@ -22,7 +22,7 @@ if [ -z $VALUE ]; then
   exit 1
 fi
 
-if [ -z $GITHUB_DEPLOY_KEY ]; then
+if [ -z $G0ITHUB_DEPLOY_KEY ]; then
   echo "GITHUB_DEPLOY_KEY no value specified"
   exit 1
 fi
@@ -44,12 +44,11 @@ ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts
 git config --global user.email "gitops-update@github.com"
 git config --global user.name "Gitops Update User"
 
-echo $GITHUB_DEPLOY_KEY > ~/.ssh/id_rsa
+echo "$4" > ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
 
 eval `ssh-agent`
 ssh-add ~/.ssh/id_rsa
-ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
 git clone git@github.com:$GITHUB_ORG_AND_REPO.git $RUNNER_TEMP/infra-as-code-repo
 wget https://raw.githubusercontent.com/simplycubed/gitops-update/master/replace-key.py
