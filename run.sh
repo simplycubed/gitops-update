@@ -19,11 +19,11 @@ ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts
 git config --global user.email "gitops-update@github.com"
 git config --global user.name "Gitops Update User"
 
+# The key needs to be wrapped in double quotes
 echo "$GITHUB_DEPLOY_KEY" > ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
 
 rm -rf $RUNNER_TEMP/infra-as-code-repo
-
 git clone git@github.com:$GITHUB_ORG_AND_REPO.git $RUNNER_TEMP/infra-as-code-repo
 wget https://raw.githubusercontent.com/simplycubed/gitops-update/master/replace-key.py
 python replace-key.py --file $RUNNER_TEMP/infra-as-code-repo/$FILE_NAME --key $KEY --value $VALUE

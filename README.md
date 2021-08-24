@@ -8,7 +8,7 @@ You have a deployment.yaml file in a `myorg/app-env` repository that has below c
 
 Add this to github acion:
 
-```yaml
+```text
 - name: update gitops
 	uses: simplycubed/gitops-update@master
 	with:
