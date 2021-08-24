@@ -34,6 +34,13 @@ fi
 
 mkdir -p ~/.ssh
 
+cat <<EOF >~/.ssh/config
+Hostname github.com
+IdentityFile ~/.ssh/id_rsa
+EOF
+
+ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts
+
 git config --global user.email "gitops-update@github.com"
 git config --global user.name "Gitops Update User"
 
