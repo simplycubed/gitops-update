@@ -44,13 +44,12 @@ ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts
 git config --global user.email "gitops-update@github.com"
 git config --global user.name "Gitops Update User"
 
-echo "$4" > ~/.ssh/id_rsa
+echo $GITHUB_DEPLOY_KEY > ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
 
 eval `ssh-agent`
 ssh-add ~/.ssh/id_rsa
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-
 
 git clone git@github.com:$GITHUB_ORG_AND_REPO.git $RUNNER_TEMP/infra-as-code-repo
 wget https://raw.githubusercontent.com/simplycubed/gitops-update/master/replace-key.py
