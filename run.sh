@@ -22,7 +22,7 @@ if [ -z $VALUE ]; then
   exit 1
 fi
 
-if [ -z $G0ITHUB_DEPLOY_KEY ]; then
+if [ -z $GITHUB_DEPLOY_KEY ]; then
   echo "GITHUB_DEPLOY_KEY no value specified"
   exit 1
 fi
