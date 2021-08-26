@@ -9,7 +9,7 @@ You have a deployment.yaml file in a `myorg/app-env` repository that has below c
 Add this to github acion:
 
 ```text
-- name: update gitops
+- name: GitOps Update
     uses: simplycubed/gitops-update@master
     with:
       filename: "path/to/deployment.yaml"
@@ -18,3 +18,4 @@ Add this to github acion:
       github-deploy-key: ${{ secrets.GITOPS_SSH_PRIVATE_KEY }}
       github-org-and-repo:  "myorg/app-env"
 ```
+
