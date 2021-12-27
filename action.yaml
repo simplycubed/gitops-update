@@ -20,10 +20,10 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Python 3.10
+    - name: Python 3.10.1
       uses: actions/setup-python@v2
       with:
-        python-version: 3.10.0-rc.1
+        python-version: 3.10.1
     - name: Upgrade pip
       run: pip install --upgrade pip
       shell: bash
